@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Complain";
+    int salary = (int)ViewBag.no;
+    Layout = null;
+}
+
+<div class="col-md-3">
+    <div class="info-box">
+        <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+
+        <div class="info-box-content">
+            <span class="info-box-text">Total Complains</span>
+            <a href="/Admin/AllComplains"><h1> <span>@salary</span></h1></a>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,106 @@
+﻿@model IEnumerable<CoolCat.PhotoGrapherLancer.Core.Entities.PhotoGrapher.PhotoGrapher>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_AdminPage.cshtml";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        PhotoGrapher
+        <small>List</small>
+    </h1>
+
+</section>
+
+<!-- Main content -->
+
+
+
+<section class="content">
+
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">PhotoGrapher List</h3>
+
+                <div class="box-tools">
+                    <form>
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                            <div class="input-group-btn">
+
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tbody>
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>UserName</th>
+                            <th>Email</th>   
+                            <th>Action</th>
+                            
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.PhotoGrapherId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                        <td><a href="compose.html">@Html.DisplayFor(modelItem => item.Email)</a></td>
+                        
+                        <td>
+                            <a href="/admin/Profiledetails/@Html.DisplayFor(modelItem => item.PhotoGrapherId)">Details</a>
+
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                        }
+
+
+
+
+
+                    </tbody>
+
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+
+
+
+    </div>
+
+
+
+    </div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- /.content -->
+    </div>
+

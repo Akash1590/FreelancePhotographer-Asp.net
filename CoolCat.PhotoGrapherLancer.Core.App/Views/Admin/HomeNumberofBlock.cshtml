@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Block";
+    int salary = (int)ViewBag.no;
+    Layout = null;
+}
+
+<div class="col-md-3">
+    <div class="info-box">
+        <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+
+        <div class="info-box-content">
+            <span class="info-box-text">Total Blocked Photographer</span>
+            <a href="/Admin/AllBlockMember"><h1> <span>@salary</span></h1></a>
+
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,161 @@
+﻿@model CoolCat.PhotoGrapherLancer.Core.Service.ServiceViewModel.PhotoGrapherProfileViewModel
+
+@{
+    ViewBag.Title = "AlbamPhotos";
+    Layout = "~/Views/Shared/_Layout_PhotoGrapherPage.cshtml";
+}
+
+@section CSS{
+
+    <link href="~/Content/Component/dist/css/uploadphoto.css" rel="stylesheet" />
+    
+    }
+
+@Html.Raw(TempData["msg"])
+
+<section class="content-header">
+    <h1>
+       @ViewBag.alabamname
+        <small>Albam</small>
+    </h1>
+
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container">
+
+        <center><button class="btn-info " data-toggle="modal" data-target="#addImageModal">Add Image </button></center><br />
+
+        @foreach(var item in Model.AlbamPhotos) { 
+
+
+
+        <!-- details-image -->
+        <figure class="details-image">
+            <img src="@Url.Content(item.ImagePath)" alt="" class="img-responsive">
+        </figure>
+        <!-- details-image -->
+        <!-- content -->
+        <div class="details-content">
+            <!-- left -->
+            <section class="">
+                <header>
+                    <h3>@item.Caption</h3>
+
+                </header>
+            </section>
+            <!-- left -->
+            <!-- right -->
+            <section class="text_justyfy">
+                <p>@item.Description</p>
+
+                <header>
+                    @if (@item.CameraUsed != null)
+                    {
+                    <h3>Camera Used:@item.CameraUsed</h3>
+                    }
+                </header>
+            </section>
+            <!-- right -->
+        </div>
+        <p style="color:orange;">.......................................................................................................</p>
+       }
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<div class="modal fade" id="addImageModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Albams Photos Upload</h4>
+                <!--  <center><button class="btn-info " data-toggle="modal" data-target="#addImageModal">Add Image </button></center> -->
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+
+
+                    <!-- Upload  -->
+                   @* <form id="file-upload-form" class="uploader" action="PhotoGallary.html">*@
+
+                      
+                            @using (Html.BeginForm("AlbamPhotos", "PhotoGrapher", FormMethod.Post, new { enctype = "multipart/form-data", id = "file-upload-form", @class = "uploader" }))
+                            {
+
+                         <input type="hidden" value="@ViewBag.AlbamID" name="Albam_ID"  />  
+                        <input type="hidden" value="@ViewBag.photoGrapherId" name="Fk_PhotoGrapher_ID" />
+
+
+                        <div class="form-group">
+                            <label for="exampleInputCaption">Caption</label>
+                            <input type="text" class="form-control" id="Caption" name="Caption" placeholder="Enter your Short Caption" required>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputFile">Details</label>
+                            <textarea class="form-control" rows="3"  name="Description" placeholder="Enter Your Image Description (Optional)" ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputCamera">Camera Used</label>
+                            <input type="text" class="form-control" id="CameraUsed" name="CameraUsed" placeholder="Camera">
+                        </div>
+
+
+
+
+                        <input id="file-upload" type="file" name="File" accept="image/*" required/>
+
+                        <label for="file-upload" id="file-drag">
+                            <img id="file-image" src="#" alt="Preview" class="hidden">
+                            <div id="start">
+                                <i class="fa fa-download" aria-hidden="true"></i>
+                                <div>Select a file or drag here</div>
+                                <div id="notimage" class="hidden">Please select an image</div>
+                                <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+                            </div>
+                            <div id="response" class="hidden">
+                                <div id="messages"></div>
+                                <progress class="progress" id="file-progress" value="0">
+                                    <span>0</span>%
+                                </progress>
+                            </div>
+                        </label>
+
+
+                        <input type="submit" class="btn btn-success btn-block btn-sm" name="" value="UPLOAD ALBAM PHOTOS">
+
+                            }
+
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    
+    
+<script src="~/Content/Component/dist/js/uploadphoto.js"></script>
+    
+    
+    }

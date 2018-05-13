@@ -1,0 +1,160 @@
+﻿@model CoolCat.PhotoGrapherLancer.Core.Entities.Client.ClientJobsPost
+
+@{
+    ViewBag.Title = "NeedPhotoGrapher";
+    Layout = "~/Views/Shared/_Layout_ClientPage.cshtml";
+}
+
+
+@section CSS{
+
+    <style type="text/css">
+        .toppad {
+            margin-top: 20px;
+        }
+    </style>
+
+}
+
+
+<div class="content-wrapper">
+    <div class="container">
+
+
+
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3  toppad">
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <p class="panel-title">
+                       Need PhotoGrapher Post
+                    </p>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <!-- <div class="col-md-3 col-lg-3 " align="center">
+
+                              <img alt="User Pic" src="https://cdn4.iconfinder.com/data/icons/pretty_office_3/256/Accept-Male-User.png" class="img-circle img-responsive">
+                         </div> -->
+
+
+                        @using (Html.BeginForm())
+
+                        {
+
+
+                            @Html.AntiForgeryToken()
+
+                            <div class="col-md-12 col-lg-12 col-xs-6 ">
+
+
+                                <table class="table table-user-information">
+                                    <tbody>
+
+                                        @Html.HiddenFor(model => model.FkClientID)
+                                        @Html.HiddenFor(model => model.PostId)
+                                        <tr>
+                                            <td>Title</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>Hire Date</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.HireDate, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.HireDate, "", new { @class = "text-danger" })
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>Hire Time</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.HireTime, new { htmlAttributes = new { @class = "form-control", @type = "time" } })
+                                                @Html.ValidationMessageFor(model => model.HireTime, "", new { @class = "text-danger" })
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Payment</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.payment, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.payment, "", new { @class = "text-danger" })
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Description</td>
+                                            <td>
+                                                @*@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", @type = "textarea" } })*@
+                                                @Html.TextAreaFor(model => model.Description, new { @cols=65,@rows=3,htmlAttributes = new { @class = "form-control"} })
+                                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Address</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                            </td>
+                                        </tr>
+
+
+
+                                        <tr>
+                                            <td>Email</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Phone</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                            </td>
+                                        </tr>
+
+
+                                       
+                                      
+
+
+
+
+
+                                  
+
+                                    </tbody>
+
+
+                                </table>
+                                <button type="submit" class="btn btn-success">Post</button>
+
+
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+

@@ -1,0 +1,132 @@
+﻿@model CoolCat.PhotoGrapherLancer.Core.Entities.Client.Client
+
+@{
+    Layout = "~/Views/Shared/_Layout_ClientPage.cshtml";
+}
+
+
+
+@section CSS{
+
+    <style type="text/css">
+        .toppad {
+            margin-top: 20px;
+        }
+    </style>
+
+}
+
+<div class="content-wrapper">
+    <div class="container">
+
+
+
+
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4  toppad">
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <p class="panel-title">
+                        Update your Profile
+
+
+
+
+                    </p>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <!-- <div class="col-md-3 col-lg-3 " align="center">
+
+                              <img alt="User Pic" src="https://cdn4.iconfinder.com/data/icons/pretty_office_3/256/Accept-Male-User.png" class="img-circle img-responsive">
+                         </div> -->
+
+
+                        @using (Html.BeginForm())
+
+                        {
+
+
+                            @Html.AntiForgeryToken()
+
+                            <div class=" col-md-12 col-lg-12 col-xs-6 ">
+
+
+                                <table class="table table-user-information">
+                                    <tbody>
+
+                                        @Html.HiddenFor(model => model.ClientId)
+                                        <tr>
+                                            <td>Full Name</td>
+                                            <td>
+                                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>
+                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Phone</td>
+                                        <td>
+                                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>Address</td>
+                                    <td>
+                                     @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+
+                            @Html.HiddenFor(model=>model.Password)
+
+                            <tr>
+                                <td>Password Need!</td>
+                                <td>
+                                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "Password Need If you Update", new { @class = "text-danger" })
+                                </td>
+                            </tr>
+
+
+
+
+                            @*<tr>
+                                <td>Image</td>
+                                <td><input type="file" name="image"></td>
+                            </tr>*@
+
+                        </tbody>
+
+
+                    </table>
+                    <button type="submit" class="btn btn-success">Update</button>
+
+
+                </div>
+
+                        }
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+</div>
+    </div>

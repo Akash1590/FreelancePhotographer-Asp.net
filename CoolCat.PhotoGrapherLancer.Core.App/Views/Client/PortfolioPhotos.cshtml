@@ -1,0 +1,96 @@
+﻿@model CoolCat.PhotoGrapherLancer.Core.Service.ServiceViewModel.PhotoGrapherProfileViewModel
+
+@{
+    ViewBag.Title = "PortfolioPhotos";
+    Layout = "~/Views/Shared/_Layout_ClientPage.cshtml";
+}
+
+@section CSS{
+
+    <link href="~/Content/Component/dist/css/uploadphoto.css" rel="stylesheet" />
+
+}
+
+
+
+
+
+<div class="content-wrapper">
+    <div class="container">
+
+
+        <section class="content-header">
+            <h1>
+                @ViewBag.alabamname
+                <small>Albam</small>
+            </h1>
+
+        </section>
+
+        <br />
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container">
+
+
+
+                @foreach (var item in Model.AlbamPhotos)
+                {
+
+
+
+        <!-- details-image -->
+                    <figure class="details-image">
+                        <img src="@Url.Content(item.ImagePath)" alt="" class="img-responsive">
+                    </figure>
+        <!-- details-image -->
+        <!-- content -->
+                    <div class="details-content">
+                        <!-- left -->
+                        <section class="">
+                            <header>
+                                <h3>@item.Caption</h3>
+
+                            </header>
+                        </section>
+                        <!-- left -->
+                        <!-- right -->
+                        <section class="text_justyfy">
+                            <p>@item.Description</p>
+
+                            <header>
+                                @if (@item.CameraUsed != null)
+                                {
+                                    <h3>Camera Used:@item.CameraUsed</h3>
+                                }
+                            </header>
+                        </section>
+                        <!-- right -->
+                    </div>
+                    <p style="color:orange;">.......................................................................................................</p>
+                }
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+</div>
+    </div>
+
+
+
+
+
+        @section Scripts{
+
+
+            <script src="~/Content/Component/dist/js/uploadphoto.js"></script>
+
+
+        }

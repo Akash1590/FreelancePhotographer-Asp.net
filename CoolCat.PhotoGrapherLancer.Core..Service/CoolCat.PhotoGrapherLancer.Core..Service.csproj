@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D8484F9C-AA87-491C-B01E-E83A0B4EF34F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CoolCat.PhotoGrapherLancer.Core.Service</RootNamespace>
+    <AssemblyName>CoolCat.PhotoGrapherLancer.Core._.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminService.cs" />
+    <Compile Include="AlbumService.cs" />
+    <Compile Include="AuthenticationServices.cs" />
+    <Compile Include="BlockService.cs" />
+    <Compile Include="BookingService.cs" />
+    <Compile Include="clientjobappliedservice.cs" />
+    <Compile Include="ClientServices.cs" />
+    <Compile Include="ComplainService.cs" />
+    <Compile Include="ContactService.cs" />
+    <Compile Include="EmailExistService.cs" />
+    <Compile Include="JobPostService.cs" />
+    <Compile Include="LoginService.cs" />
+    <Compile Include="PhotoGallaryService.cs" />
+    <Compile Include="PhotoGrapherServices.cs" />
+    <Compile Include="PhotoGrapherSocialService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceViewModel\AppliedPostViewModel.cs" />
+    <Compile Include="ServiceViewModel\PhotoGrapherProfileViewModel.cs" />
+    <Compile Include="ServiceViewModel\VLogin.cs" />
+    <Compile Include="UsernameExistService.cs" />
+    <Compile Include="WarnService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoolCat.PhotoGrapherLancer.Core..Service.Interfaces\CoolCat.PhotoGrapherLancer.Core..Service.Interfaces.csproj">
+      <Project>{413f6c72-c9ff-4204-b57a-cdfdb840a26d}</Project>
+      <Name>CoolCat.PhotoGrapherLancer.Core..Service.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoolCat.PhotoGrapherLancer.Core.Entities\CoolCat.PhotoGrapherLancer.Core.Entities.csproj">
+      <Project>{e27ba53c-cca9-4faa-ba2f-7362042aea30}</Project>
+      <Name>CoolCat.PhotoGrapherLancer.Core.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoolCat.PhotoGrapherLancer.Core.Infrastructure\CoolCat.PhotoGrapherLancer.Core.Infrastructure.csproj">
+      <Project>{c47fe2c8-f369-4987-a08c-f9eefbe5f119}</Project>
+      <Name>CoolCat.PhotoGrapherLancer.Core.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

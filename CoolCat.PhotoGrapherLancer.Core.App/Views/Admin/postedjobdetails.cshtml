@@ -1,0 +1,116 @@
+﻿
+@model CoolCat.PhotoGrapherLancer.Core.Entities.Client.ClientJobsPost
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout_AdminPage.cshtml";
+}
+
+@section CSS{
+
+    <style type="text/css">
+        .toppad {
+            margin-top: 20px;
+        }
+    </style>
+
+}
+
+
+
+
+
+<div class="content-wrapper">
+    <div class="container">
+
+
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 toppad">
+
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <p class="panel-title">
+                        Posted Job Details
+
+
+
+
+                    </p>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        
+
+
+                        <div class=" col-md-12 col-lg-12 col-xs-6 ">
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>Title :</td>
+                                        <td>@Html.DisplayFor(model => model.Title)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email :</td>
+                                        <td><a href="#">@Html.DisplayFor(model => model.Email)</a></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Phone :</td>
+                                        <td>@Html.DisplayFor(model => model.Phone)</td>
+
+                                    </tr>
+
+
+                                    <tr>
+                                        <td>Address :</td>
+                                        <td>@Html.DisplayFor(model => model.Address)</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Hiredate :</td>
+                                        <td>@Html.DisplayFor(model => model.HireDate)</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Hiretime :</td>
+                                        <td>@Html.DisplayFor(model => model.HireTime)</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Payment :</td>
+                                        <td>@Html.DisplayFor(model => model.payment)</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Description :</td>
+                                        <td><p>@Html.DisplayFor(model => model.Description)</p></td>
+
+                                    </tr>
+
+
+
+
+
+                                </tbody>
+
+                            </table>
+
+                            <a href="/Admin/postedjobdelete/@Html.DisplayFor(model => model.PostId)" class="btn btn-info">Delete</a>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->

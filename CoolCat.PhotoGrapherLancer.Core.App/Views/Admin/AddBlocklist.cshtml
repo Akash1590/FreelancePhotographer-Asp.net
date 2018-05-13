@@ -1,0 +1,39 @@
+﻿@model CoolCat.PhotoGrapherLancer.Core.Entities.Admin.Warn
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_AdminPage.cshtml";
+}
+
+<div class="tab-pane" id="Complain">
+
+    @using (Html.BeginForm("AddBlocklist", "Admin", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+    <div class="form-group">
+        <input name="warnid" value="@Model.WarnId" class="form-control" id="warnid" hidden>
+
+    </div>
+        <div class="form-group">
+            <label for="inputEmail" class="col-sm-2 control-label">PhotoGrapherId</label>
+
+            <div class="col-sm-10">
+                
+                <input name="Fk_PhotoGrapherID" value="@Model.Fk_PhotoGrapherID" class="form-control" id="Fk_PhotoGrapherID"  readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPhone" class="col-sm-2 control-label">PhotoGrapherName</label>
+
+            <div class="col-sm-10">
+                <input type="text" class="form-control" value="@Model.PhotographerName" name="PhotographerName" id="PhotographerName" placeholder="PhotographerName" readonly>
+            </div>
+        </div>  
+
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-danger">Block PhotoGrapher</button>
+            </div>
+        </div>
+    }
+</div>
+

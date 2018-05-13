@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_AdminPage.cshtml";
+}
+
+<div class="col-md-6">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <i class="fa fa-bar-chart-o"></i>
+
+            <h3 class="box-title">Income Chart</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div id="bar-chart" style="height: 300px;"></div>
+        </div>
+        <!-- /.box-body-->
+    </div>
+
+</div>
+
+@section Scripts{
+
+    <script src="../../Content/Component/bower_components/Flot/jquery.flot.js"></script>
+    <script src="../../Content/Component/bower_components/Flot/jquery.flot.resize.js"></script>
+    <script src="../../Content/Component/bower_components/Flot/jquery.flot.pie.js"></script>
+    <script src="../../Content/Component/bower_components/Flot/jquery.flot.categories.js"></script>
+
+    <script>
+        $(function () {
+
+
+            /*
+                * BAR CHART
+                * ---------
+                */
+
+            var bar_data = {
+                data: [['January', 50000], ['February', 40000], ['March', 35000], ['April', 30000], ['May', 51000], ['June', 25000]],
+                color: '#3c8dbc'
+            }
+            $.plot('#bar-chart', [bar_data], {
+                grid: {
+                    borderWidth: 1,
+                    borderColor: '#f3f3f3',
+                    tickColor: '#f3f3f3'
+                },
+                series: {
+                    bars: {
+                        show: true,
+                        barWidth: 0.5,
+                        align: 'center'
+                    }
+                },
+                xaxis: {
+                    mode: 'categories',
+                    tickLength: 0
+                }
+            })
+            /* END BAR CHART */
+
+        })
+    </script>
+    }

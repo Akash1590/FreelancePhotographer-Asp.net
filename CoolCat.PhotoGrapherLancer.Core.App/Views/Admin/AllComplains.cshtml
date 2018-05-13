@@ -1,0 +1,104 @@
+﻿@model IEnumerable<CoolCat.PhotoGrapherLancer.Core.Entities.PublicProfilePhotoGrapher.ClientComplain>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_AdminPage.cshtml";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Admin
+            <small>DashBoard</small>
+        </h1>
+
+    </section>
+
+    <!-- Main content -->
+
+
+
+    <section class="content">
+
+        <div class="row">
+            <div class="col-md-3">
+
+
+                <div class="box-body no-padding">
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+
+            <!-- /.box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Complain Box</h3>
+
+
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="mailbox-controls">
+
+
+
+                        <!-- /.pull-right -->
+                    </div>
+                    <div class="table-responsive mailbox-messages">
+                        <table class="table table-hover table-striped">
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+
+                                    <tr>
+
+                                        <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td>
+                                        <td class="mailbox-name"><a href="/Admin/Complaindetails/@Html.DisplayFor(modelItem => item.ComplainId)">@Html.DisplayFor(modelItem => item.VictimName)</a></td>
+                                        <td class="mailbox-subject">
+                                            <b>@Html.DisplayFor(modelItem => item.Message)</b>
+                                        </td>
+
+
+                                    </tr>
+                                }
+
+
+
+
+
+
+                            </tbody>
+                        </table>
+                        <!-- /.table -->
+                    </div>
+                    <!-- /.mail-box-messages -->
+                </div>
+                <!-- /.box-body -->
+
+            </div>
+            <!-- /. box -->
+        </div>
+        <!-- /.col -->
+</div>
+<!-- /.row -->
+</div>
+
+
+
+    </section>
+
+
+
+
+
+
+
+<!-- /.content -->
+  </div>
+<!-- /.content-wrapper -->

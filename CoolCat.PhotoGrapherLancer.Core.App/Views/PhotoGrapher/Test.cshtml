@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CoolCat.PhotoGrapherLancer.Core.Service.ServiceViewModel.AppliedPostViewModel>
+
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_Layout_PhotoGrapherPage.cshtml";
+}
+
+<h2>Test</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>PostID</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>@item.JobPostList.PostId</td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

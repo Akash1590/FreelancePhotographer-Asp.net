@@ -1,0 +1,610 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C85BAC96-F3C4-48AC-800F-9316220D9D5C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CoolCat.PhotoGrapherLancer.Core.App</RootNamespace>
+    <AssemblyName>CoolCat.PhotoGrapherLancer.Core.App</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IncludeIisSettings>false</IncludeIisSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\js\npm.js" />
+    <Content Include="Content\Component\bower_components\fastclick\lib\fastclick.js" />
+    <Content Include="Content\Component\bower_components\Flot\jquery.flot.categories.js" />
+    <Content Include="Content\Component\bower_components\Flot\jquery.flot.js" />
+    <Content Include="Content\Component\bower_components\Flot\jquery.flot.pie.js" />
+    <Content Include="Content\Component\bower_components\Flot\jquery.flot.resize.js" />
+    <Content Include="Content\Component\bower_components\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\Component\bower_components\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\Component\bower_components\Ionicons\css\ionicons.css" />
+    <Content Include="Content\Component\bower_components\Ionicons\css\ionicons.min.css" />
+    <Content Include="Content\Component\bower_components\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="Content\Component\bower_components\jquery\dist\core.js" />
+    <Content Include="Content\Component\bower_components\jquery\dist\jquery.js" />
+    <Content Include="Content\Component\bower_components\jquery\dist\jquery.min.js" />
+    <Content Include="Content\Component\bower_components\jquery\dist\jquery.slim.js" />
+    <Content Include="Content\Component\bower_components\jquery\dist\jquery.slim.min.js" />
+    <Content Include="Content\Component\dist\css\AdminLTE.css" />
+    <Content Include="Content\Component\dist\css\AdminLTE.min.css" />
+    <Content Include="Content\Component\dist\css\alt\AdminLTE-bootstrap-social.css" />
+    <Content Include="Content\Component\dist\css\alt\AdminLTE-bootstrap-social.min.css" />
+    <Content Include="Content\Component\dist\css\alt\AdminLTE-fullcalendar.css" />
+    <Content Include="Content\Component\dist\css\alt\AdminLTE-fullcalendar.min.css" />
+    <Content Include="Content\Component\dist\css\alt\AdminLTE-select2.css" />
+    <Content Include="Content\Component\dist\css\alt\AdminLTE-select2.min.css" />
+    <Content Include="Content\Component\dist\css\alt\AdminLTE-without-plugins.css" />
+    <Content Include="Content\Component\dist\css\alt\AdminLTE-without-plugins.min.css" />
+    <Content Include="Content\Component\dist\css\Login.css" />
+    <Content Include="Content\Component\dist\css\photogallary.css" />
+    <Content Include="Content\Component\dist\css\PhotoGrapherList.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-black-light.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-black-light.min.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-black.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-black.min.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-blue-light.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-blue-light.min.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-blue.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-blue.min.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-green-light.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-green-light.min.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-green.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-green.min.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-purple-light.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-purple-light.min.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-purple.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-purple.min.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-red-light.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-red-light.min.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-red.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-red.min.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-yellow-light.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-yellow-light.min.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-yellow.css" />
+    <Content Include="Content\Component\dist\css\skins\skin-yellow.min.css" />
+    <Content Include="Content\Component\dist\css\skins\_all-skins.css" />
+    <Content Include="Content\Component\dist\css\skins\_all-skins.min.css" />
+    <Content Include="Content\Component\dist\css\uploadphoto.css" />
+    <Content Include="Content\Component\dist\img\avatar.png" />
+    <Content Include="Content\Component\dist\img\avatar04.png" />
+    <Content Include="Content\Component\dist\img\avatar2.png" />
+    <Content Include="Content\Component\dist\img\avatar3.png" />
+    <Content Include="Content\Component\dist\img\avatar5.png" />
+    <Content Include="Content\Component\dist\img\b.jpg" />
+    <Content Include="Content\Component\dist\img\boxed-bg.jpg" />
+    <Content Include="Content\Component\dist\img\boxed-bg.png" />
+    <Content Include="Content\Component\dist\img\coverphoto.jpg" />
+    <Content Include="Content\Component\dist\img\default-50x50.gif" />
+    <Content Include="Content\Component\dist\img\gallary\1.jpg" />
+    <Content Include="Content\Component\dist\img\gallary\2.jpg" />
+    <Content Include="Content\Component\dist\img\gallary\3.jpg" />
+    <Content Include="Content\Component\dist\img\gallary\4.jpg" />
+    <Content Include="Content\Component\dist\img\icons.png" />
+    <Content Include="Content\Component\dist\img\photo1.png" />
+    <Content Include="Content\Component\dist\img\photo2.png" />
+    <Content Include="Content\Component\dist\img\photo3.jpg" />
+    <Content Include="Content\Component\dist\img\photo4.jpg" />
+    <Content Include="Content\Component\dist\img\PhotoGrapher\1.jpg" />
+    <Content Include="Content\Component\dist\img\PhotoGrapher\2.jpg" />
+    <Content Include="Content\Component\dist\img\PhotoGrapher\3.jpg" />
+    <Content Include="Content\Component\dist\img\PhotoGrapher\4.jpg" />
+    <Content Include="Content\Component\dist\img\PhotoGrapher\5.jpg" />
+    <Content Include="Content\Component\dist\img\PhotoGrapher\6.jpg" />
+    <Content Include="Content\Component\dist\img\saha.JPG" />
+    <Content Include="Content\Component\dist\img\user1-128x128.jpg" />
+    <Content Include="Content\Component\dist\img\user2-160x160.jpg" />
+    <Content Include="Content\Component\dist\img\user3-128x128.jpg" />
+    <Content Include="Content\Component\dist\img\user4-128x128.jpg" />
+    <Content Include="Content\Component\dist\img\user5-128x128.jpg" />
+    <Content Include="Content\Component\dist\img\user6-128x128.jpg" />
+    <Content Include="Content\Component\dist\img\user7-128x128.jpg" />
+    <Content Include="Content\Component\dist\img\user8-128x128.jpg" />
+    <Content Include="Content\Component\dist\js\adminlte.min.js" />
+    <Content Include="Content\Component\dist\js\demo.js" />
+    <Content Include="Content\Component\dist\js\pages\adminlte.js" />
+    <Content Include="Content\Component\dist\js\pages\dashboard.js" />
+    <Content Include="Content\Component\dist\js\pages\dashboard2.js" />
+    <Content Include="Content\Component\dist\js\uploadphoto.js" />
+    <Content Include="Content\Component\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.js" />
+    <Content Include="Content\Component\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.min.js" />
+    <Content Include="Content\Component\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.css" />
+    <Content Include="Content\Component\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.min.css" />
+    <Content Include="Content\Component\plugins\iCheck\flat\aero%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\aero.css" />
+    <Content Include="Content\Component\plugins\iCheck\flat\aero.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\blue%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\blue.css" />
+    <Content Include="Content\Component\plugins\iCheck\flat\blue.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\flat%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\flat.css" />
+    <Content Include="Content\Component\plugins\iCheck\flat\flat.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\green%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\green.css" />
+    <Content Include="Content\Component\plugins\iCheck\flat\green.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\grey%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\grey.css" />
+    <Content Include="Content\Component\plugins\iCheck\flat\grey.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\orange%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\orange.css" />
+    <Content Include="Content\Component\plugins\iCheck\flat\orange.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\pink%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\pink.css" />
+    <Content Include="Content\Component\plugins\iCheck\flat\pink.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\purple%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\purple.css" />
+    <Content Include="Content\Component\plugins\iCheck\flat\purple.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\red%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\red.css" />
+    <Content Include="Content\Component\plugins\iCheck\flat\red.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\yellow%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\yellow.css" />
+    <Content Include="Content\Component\plugins\iCheck\flat\yellow.png" />
+    <Content Include="Content\Component\plugins\iCheck\flat\_all.css" />
+    <Content Include="Content\Component\plugins\iCheck\icheck.min.js" />
+    <Content Include="Content\Component\plugins\iCheck\square\aero%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\aero.css" />
+    <Content Include="Content\Component\plugins\iCheck\square\aero.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\blue%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\blue.css" />
+    <Content Include="Content\Component\plugins\iCheck\square\blue.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\green%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\green.css" />
+    <Content Include="Content\Component\plugins\iCheck\square\green.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\grey%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\grey.css" />
+    <Content Include="Content\Component\plugins\iCheck\square\grey.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\orange%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\orange.css" />
+    <Content Include="Content\Component\plugins\iCheck\square\orange.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\pink%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\pink.css" />
+    <Content Include="Content\Component\plugins\iCheck\square\pink.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\purple%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\purple.css" />
+    <Content Include="Content\Component\plugins\iCheck\square\purple.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\red%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\red.css" />
+    <Content Include="Content\Component\plugins\iCheck\square\red.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\square%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\square.css" />
+    <Content Include="Content\Component\plugins\iCheck\square\square.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\yellow%402x.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\yellow.css" />
+    <Content Include="Content\Component\plugins\iCheck\square\yellow.png" />
+    <Content Include="Content\Component\plugins\iCheck\square\_all.css" />
+    <Content Include="Content\Homepage\asset\css\bootstrap-theme.css" />
+    <Content Include="Content\Homepage\asset\css\bootstrap-theme.min.css" />
+    <Content Include="Content\Homepage\asset\css\bootstrap.css" />
+    <Content Include="Content\Homepage\asset\css\bootstrap.min.css" />
+    <Content Include="Content\Homepage\asset\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Homepage\asset\js\bootstrap.js" />
+    <Content Include="Content\Homepage\asset\js\bootstrap.min.js" />
+    <Content Include="Content\Homepage\asset\js\npm.js" />
+    <Content Include="Content\Homepage\css\animate.css" />
+    <Content Include="Content\Homepage\css\color\blue.css" />
+    <Content Include="Content\Homepage\css\color\green.css" />
+    <Content Include="Content\Homepage\css\color\light-blue.css" />
+    <Content Include="Content\Homepage\css\color\light-green.css" />
+    <Content Include="Content\Homepage\css\color\light-red.css" />
+    <Content Include="Content\Homepage\css\color\yellow.css" />
+    <Content Include="Content\Homepage\css\font-awesome.css" />
+    <Content Include="Content\Homepage\css\font-awesome.min.css" />
+    <Content Include="Content\Homepage\css\owl.carousel.css" />
+    <Content Include="Content\Homepage\css\owl.theme.css" />
+    <Content Include="Content\Homepage\css\owl.transitions.css" />
+    <Content Include="Content\Homepage\css\responsive.css" />
+    <Content Include="Content\Homepage\css\style.css" />
+    <Content Include="Content\Homepage\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Homepage\images\about-01.jpg" />
+    <Content Include="Content\Homepage\images\about-02.jpg" />
+    <Content Include="Content\Homepage\images\about-03.jpg" />
+    <Content Include="Content\Homepage\images\catagory\Convocation.jpg" />
+    <Content Include="Content\Homepage\images\catagory\event.jpg" />
+    <Content Include="Content\Homepage\images\catagory\family.jpg" />
+    <Content Include="Content\Homepage\images\catagory\landscape.jpg" />
+    <Content Include="Content\Homepage\images\catagory\party.jpg" />
+    <Content Include="Content\Homepage\images\catagory\Portrait.jpg" />
+    <Content Include="Content\Homepage\images\catagory\sports.jpg" />
+    <Content Include="Content\Homepage\images\catagory\weeding.jpg" />
+    <Content Include="Content\Homepage\images\galaxy.jpg" />
+    <Content Include="Content\Homepage\images\header-back.png" />
+    <Content Include="Content\Homepage\images\header-bg-1.jpg" />
+    <Content Include="Content\Homepage\images\logos\aetuts.jpg" />
+    <Content Include="Content\Homepage\images\logos\creative-market.jpg" />
+    <Content Include="Content\Homepage\images\logos\designmodo.jpg" />
+    <Content Include="Content\Homepage\images\logos\envato.jpg" />
+    <Content Include="Content\Homepage\images\logos\microlancer.jpg" />
+    <Content Include="Content\Homepage\images\logos\themeforest.jpg" />
+    <Content Include="Content\Homepage\images\logos\wordpress.jpg" />
+    <Content Include="Content\Homepage\images\office\about-01.jpg" />
+    <Content Include="Content\Homepage\images\office\about-02.jpg" />
+    <Content Include="Content\Homepage\images\office\about-03.jpg" />
+    <Content Include="Content\Homepage\images\parallax\bg-01.jpg" />
+    <Content Include="Content\Homepage\images\parallax\bg-02.jpg" />
+    <Content Include="Content\Homepage\images\parallax\call-to.jpg" />
+    <Content Include="Content\Homepage\images\parallax\contact-bg.jpg" />
+    <Content Include="Content\Homepage\images\parallax\middile.jpg" />
+    <Content Include="Content\Homepage\images\parallax\pricing-bg.jpg" />
+    <Content Include="Content\Homepage\images\parallax\testimonial-bg.jpg" />
+    <Content Include="Content\Homepage\images\portfolio\img1.jpg" />
+    <Content Include="Content\Homepage\images\portfolio\img2.jpg" />
+    <Content Include="Content\Homepage\images\portfolio\img3.jpg" />
+    <Content Include="Content\Homepage\images\portfolio\img4.jpg" />
+    <Content Include="Content\Homepage\images\portfolio\img5.jpg" />
+    <Content Include="Content\Homepage\images\portfolio\img6.jpg" />
+    <Content Include="Content\Homepage\images\team\manage-1.png" />
+    <Content Include="Content\Homepage\images\team\manage-2.png" />
+    <Content Include="Content\Homepage\images\team\manage-3.png" />
+    <Content Include="Content\Homepage\images\team\manage-4.png" />
+    <Content Include="Content\Homepage\images\team\saha.jpg" />
+    <Content Include="Content\Homepage\images\testimonial\f.png" />
+    <Content Include="Content\Homepage\images\testimonial\face_1.jpg" />
+    <Content Include="Content\Homepage\images\testimonial\face_2.jpg" />
+    <Content Include="Content\Homepage\images\testimonial\face_2.png" />
+    <Content Include="Content\Homepage\images\testimonial\face_3.jpg" />
+    <Content Include="Content\Homepage\images\testimonial\face_3.png" />
+    <Content Include="Content\Homepage\images\testimonial\face_4.png" />
+    <Content Include="Content\Homepage\js\cbpAnimatedHeader.js" />
+    <Content Include="Content\Homepage\js\classie.js" />
+    <Content Include="Content\Homepage\js\contact_me.js" />
+    <Content Include="Content\Homepage\js\count-to.js" />
+    <Content Include="Content\Homepage\js\jqBootstrapValidation.js" />
+    <Content Include="Content\Homepage\js\jquery-2.1.1.min.js" />
+    <Content Include="Content\Homepage\js\jquery.appear.js" />
+    <Content Include="Content\Homepage\js\jquery.easing.1.3.js" />
+    <Content Include="Content\Homepage\js\jquery.fitvids.js" />
+    <Content Include="Content\Homepage\js\modernizr.custom.js" />
+    <Content Include="Content\Homepage\js\owl.carousel.min.js" />
+    <Content Include="Content\Homepage\js\script.js" />
+    <Content Include="Content\Homepage\js\styleswitcher.js" />
+    <Content Include="Content\Image\Albam\photo4184120518.jpg" />
+    <Content Include="Content\Image\ProfileImage\Desert180944085.jpg" />
+    <Content Include="Content\Image\ProfileImage\Koala185011548.jpg" />
+    <Content Include="Content\Image\ProfileImage\Penguins180956077.jpg" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="scripts\ai.0.22.9-build00167.js" />
+    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\jquery-1.10.2.js" />
+    <Content Include="scripts\jquery-1.10.2.min.js" />
+    <Content Include="scripts\jquery-1.10.2.min.map" />
+    <None Include="scripts\jquery.validate-vsdoc.js" />
+    <None Include="scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\jquery-1.8.0.js" />
+    <Content Include="scripts\jquery-1.8.0.min.js" />
+    <Content Include="scripts\jquery.validate.js" />
+    <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\modernizr-2.6.2.js" />
+    <Content Include="Views\Shared\index.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PhotoGrapherController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConfirmJobvm.cs" />
+    <Compile Include="Models\photographerallprofilevm.cs" />
+    <Compile Include="Models\VpostModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Homepage\asset\css\bootstrap-theme.css.map" />
+    <Content Include="Content\Homepage\asset\css\bootstrap.css.map" />
+    <Content Include="Content\Homepage\asset\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Homepage\asset\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Homepage\asset\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Homepage\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Homepage\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Homepage\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Homepage\fonts\FontAwesome.otf" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Content\Component\dist\css\adminlte.css.map" />
+    <Content Include="Content\Component\dist\css\adminlte.min.css.map" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\Component\bower_components\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Component\bower_components\font-awesome\css\font-awesome.css.map" />
+    <Content Include="Content\Component\bower_components\jquery\dist\jquery.min.map" />
+    <Content Include="Content\Component\bower_components\jquery\dist\jquery.slim.min.map" />
+    <Content Include="Views\Shared\_Layout_ClientPage.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
+    <Content Include="Views\Account\CreateAccount.cshtml" />
+    <Content Include="Views\Account\CreateAccountPhotoGrapher.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Client\PostShow.cshtml" />
+    <Content Include="Views\Client\JobsInterestd.cshtml" />
+    <Content Include="Views\Client\Profile.cshtml" />
+    <Content Include="Views\Client\Edit.cshtml" />
+    <Content Include="Views\Client\ChangePassword.cshtml" />
+    <Content Include="Views\Client\NeedPhotoGrapher.cshtml" />
+    <Content Include="Views\Client\EditPost.cshtml" />
+    <Content Include="Views\Shared\_Layout_PhotoGrapherPage.cshtml" />
+    <Content Include="Views\PhotoGrapher\Index.cshtml" />
+    <Content Include="Views\PhotoGrapher\Jobs.cshtml" />
+    <Content Include="Views\PhotoGrapher\JobApplied.cshtml" />
+    <Content Include="Views\PhotoGrapher\AppointmentList.cshtml" />
+    <Content Include="Views\PhotoGrapher\ClientDetails.cshtml" />
+    <Content Include="Views\PhotoGrapher\Test.cshtml" />
+    <Content Include="Views\PhotoGrapher\ProfilePicture.cshtml" />
+    <Content Include="Views\PhotoGrapher\Profile.cshtml" />
+    <Content Include="Views\PhotoGrapher\ChangePassword.cshtml" />
+    <Content Include="Views\PhotoGrapher\AlbamPhotos.cshtml" />
+    <Content Include="Views\PhotoGrapher\PhotoDetails.cshtml" />
+    <Content Include="Views\Client\PhotoGrapherProfile.cshtml" />
+    <Content Include="Views\Client\PhotoDetails.cshtml" />
+    <Content Include="Views\Client\PortfolioPhotos.cshtml" />
+    <Content Include="Views\Client\PhotoGrapherList.cshtml" />
+    <Content Include="Views\PhotoGrapher\ContactList.cshtml" />
+    <Content Include="Views\PhotoGrapher\ContactDetails.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_AdminPage.cshtml" />
+    <Content Include="Views\Admin\Profile.cshtml" />
+    <Content Include="Views\Admin\allPhotographer.cshtml" />
+    <Content Include="Views\Admin\Profiledetails.cshtml" />
+    <Content Include="Views\Admin\Complaindetails.cshtml" />
+    <Content Include="Views\Admin\AllWarning.cshtml" />
+    <Content Include="Views\Admin\AddBlocklist.cshtml" />
+    <Content Include="Views\Admin\AllBlockMember.cshtml" />
+    <Content Include="Views\Admin\allCliernts.cshtml" />
+    <Content Include="Views\Admin\clientprofiledetails.cshtml" />
+    <Content Include="Views\Account\Block.cshtml" />
+    <Content Include="Views\PhotoGrapher\Warning.cshtml" />
+    <Content Include="Views\Admin\AllComplains.cshtml" />
+    <Content Include="Views\Client\jobConfirm.cshtml" />
+    <Content Include="Views\Admin\HomeNumberofClientregistered.cshtml" />
+    <Content Include="Views\Admin\HomeNumberofphotographerregistered.cshtml" />
+    <Content Include="Views\Admin\HomeNumberofadminregistered.cshtml" />
+    <Content Include="Views\Admin\HomeNumberofwarn.cshtml" />
+    <Content Include="Views\Admin\HomeNumberofBlock.cshtml" />
+    <Content Include="Views\Admin\HomeNumberofComplains.cshtml" />
+    <Content Include="Views\Admin\HomeNumberofCompletedJob.cshtml" />
+    <Content Include="Views\Admin\HomeNumberofpostedjob.cshtml" />
+    <Content Include="Views\Admin\Allpostedjob.cshtml" />
+    <Content Include="Views\Admin\postedjobdetails.cshtml" />
+    <Content Include="Views\Admin\CompletedJob.cshtml" />
+    <Content Include="Views\Admin\barchart.cshtml" />
+    <Content Include="Views\Admin\Homelatestclient.cshtml" />
+    <Content Include="Views\Admin\homeLatestPhotographer.cshtml" />
+    <Content Include="Views\Admin\HomeLatestpostedjob.cshtml" />
+    <Content Include="Views\Admin\HomeLatestCompletedJob.cshtml" />
+    <Content Include="Views\Admin\HomeTopRatedphotographer.cshtml" />
+    <Content Include="Views\Admin\ClientRegister.cshtml" />
+    <Content Include="Views\Admin\AdminCreateAccountPhotoGrapher.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\Image\AlbamPhoto\" />
+    <Folder Include="Content\Image\GallaryPhoto\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoolCat.PhotoGrapherLancer.Core..Service.Interfaces\CoolCat.PhotoGrapherLancer.Core..Service.Interfaces.csproj">
+      <Project>{413F6C72-C9FF-4204-B57A-CDFDB840A26D}</Project>
+      <Name>CoolCat.PhotoGrapherLancer.Core..Service.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoolCat.PhotoGrapherLancer.Core..Service\CoolCat.PhotoGrapherLancer.Core..Service.csproj">
+      <Project>{d8484f9c-aa87-491c-b01e-e83a0b4ef34f}</Project>
+      <Name>CoolCat.PhotoGrapherLancer.Core..Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoolCat.PhotoGrapherLancer.Core.Entities\CoolCat.PhotoGrapherLancer.Core.Entities.csproj">
+      <Project>{e27ba53c-cca9-4faa-ba2f-7362042aea30}</Project>
+      <Name>CoolCat.PhotoGrapherLancer.Core.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoolCat.PhotoGrapherLancer.Core.Infrastructure\CoolCat.PhotoGrapherLancer.Core.Infrastructure.csproj">
+      <Project>{c47fe2c8-f369-4987-a08c-f9eefbe5f119}</Project>
+      <Name>CoolCat.PhotoGrapherLancer.Core.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52212</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52212/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

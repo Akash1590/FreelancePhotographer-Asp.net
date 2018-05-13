@@ -1,0 +1,79 @@
+﻿@model CoolCat.PhotoGrapherLancer.Core.Service.ServiceViewModel.PhotoGrapherProfileViewModel
+
+@{
+    ViewBag.Title = "PhotoGrapherList";
+    Layout = "~/Views/Shared/_Layout_ClientPage.cshtml";
+}
+
+@section CSS{
+
+
+    <link href="~/Content/Component/dist/css/PhotoGrapherList.css" rel="stylesheet" />
+
+
+
+}
+
+
+
+<div class="content-wrapper">
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-12 col-12 mb40 text-center" style="padding-top: 10px;">
+                <div class="form-group">
+
+                    <select class="form-control " style="width: 50%; display: inline-block;" tabindex="-1" aria-hidden="true">
+                        <option selected="selected" disabled="">Filter PhotoGrapher</option>
+                        <option>Top Ranked</option>
+                        <option>Weeding</option>
+                        <option>Event</option>
+                        <option>Party</option>
+                        <option>Contachual</option>
+                        <option>Sports</option>
+                        <option>Convocation</option>
+                        <option>Familty</option>
+                        <option>TRavel</option>
+                    </select>
+
+                    <span><input type="submit" name="" value="Filter" class="btn btn-success"></span>
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="row">
+          @foreach (var item in Model.ProfilepictureList)
+          {
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+               
+                 <!-- team-img -->
+                <a href="/Client/PhotoGrapherProfile/@item.Fk_PhotoGrapher_ID">
+                    <div class="team-block">
+                        <div class="team-img">
+                            <img src="@Url.Content(item.ImagePath)" alt="" style="height:360px;width:380px; " />
+
+                            <div class="team-content">
+                                <h4 class="text-white mb0">@item.Pht.FullName</h4>
+                               @* <p class="team-meta">Event PhotoGrapher</p>*@
+                            </div>
+                            <div class="overlay">
+                                <div class="text">
+                                    <h4 class="mb0 text-white"> @item.Pht.FullName</h4>
+                                    <p class="mb30 team-meta">view Profile</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+          }
+       </div> 
+          
+</div>
+
+ </div>

@@ -1,0 +1,132 @@
+﻿@model IEnumerable<CoolCat.PhotoGrapherLancer.Core.Entities.PhotoGrapher.ProfilePicture>
+
+@{
+    ViewBag.Title = "ProfilePicture";
+    Layout = "~/Views/Shared/_Layout_PhotoGrapherPage.cshtml";
+}
+
+@section CSS{
+    
+    
+<link href="~/Content/Component/dist/css/uploadphoto.css" rel="stylesheet" />
+    
+<link href="~/Content/Component/dist/css/photogallary.css" rel="stylesheet" />
+    
+    }
+
+<section class="content-header">
+    <h1>
+        PhotoGrapher
+        <small>Change Profile Picture</small>
+    </h1>
+
+</section>
+
+<!-- Main content -->
+
+
+
+<section class="content">
+
+    <div class="container">
+        
+
+                @using (Html.BeginForm("ProfilePicture", "PhotoGrapher", FormMethod.Post, new { enctype = "multipart/form-data",@class= "uploader",id= "file-upload-form" }))
+                {
+
+
+
+                    <input id="file-upload" type="file" name="File" accept="image/*" />
+
+                    <label for="file-upload" id="file-drag">
+                        <img id="file-image" src="#" alt="Preview" class="hidden">
+                        <div id="start">
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                            <div>Select a file or drag here</div>
+                            <div id="notimage" class="hidden">Please select an image</div>
+                            <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+                        </div>
+                        <div id="response" class="hidden">
+                            <div id="messages"></div>
+                            <progress class="progress" id="file-progress" value="0">
+                                <span>0</span>%
+                            </progress>
+                        </div>
+                    </label>
+
+
+               
+
+
+                    <input type="submit" class="btn btn-success btn-block btn-sm" name="" value="UPLOAD YOUR PHOTO">
+
+
+
+
+
+
+
+                }
+
+
+@foreach (var item in Model)
+
+{
+
+    using (Html.BeginForm("Active", "PhotoGrapher", FormMethod.Post))
+    {
+
+        <div class="services">
+            <div class="col-md-6">
+                <figure class="snip1174 navy col-md-6">
+
+                    <img src="@Url.Content(item.ImagePath)" alt="sq-sample33" />
+                    <figcaption>
+
+                        @if (item.status =="Active") {
+                        <button class="btn btn-success">@item.status</button>
+                        }
+                        else{ 
+
+                        <p>Current</p>
+                        
+                        }
+                        <input type="hidden" name="PID" value="@item.Pf_ID"/>
+                    </figcaption>
+                </figure>
+            </div>
+
+
+        </div>
+        }
+
+    }
+
+    </div>
+
+
+
+  @*  style="opacity: 0.3;"*@
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section Scripts{
+    
+    
+<script src="~/Content/Component/dist/js/uploadphoto.js"></script>
+    
+    
+    }

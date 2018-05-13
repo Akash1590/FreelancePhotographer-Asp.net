@@ -1,0 +1,1046 @@
+﻿@model CoolCat.PhotoGrapherLancer.Core.Service.ServiceViewModel.PhotoGrapherProfileViewModel
+
+@{
+    ViewBag.Title = "PhotoGrapherProfile";
+    Layout = "~/Views/Shared/_Layout_ClientPage.cshtml";
+    int sr = 0;
+    var jss = new System.Web.Script.Serialization.JavaScriptSerializer();
+    var PhotoGrapherRatting = jss.Serialize(ViewBag.TotalRatting);
+}
+
+
+@Html.Raw(TempData["msg"])
+
+
+
+
+@section CSS{
+
+    <link href="~/Content/Component/dist/css/uploadphoto.css" rel="stylesheet" />
+
+    <link href="~/Content/Component/dist/css/photogallary.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+
+}
+
+
+<div class="content-wrapper">
+    <div class="container">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                PhotoGrapher
+                <small>Profile</small>
+            </h1>
+
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <section class="content">
+
+                <div class="row">
+                    <div class="col-md-3">
+
+                        <!-- Profile Image -->
+                        <div class="box box-primary">
+                            <div class="box-body box-profile">
+                                <img class="profile-user-img img-responsive img-circle" src="@Url.Content(Model.p_Picture.ImagePath)" alt="User profile picture">
+
+                                <h3 class="profile-username text-center">@Model.PhotoGrapher.FullName</h3>
+
+                                @*<p class="text-muted text-center">Software Engineer</p>*@
+
+                                <ul class="list-group list-group-unbordered">
+                                    <li class="list-group-item">
+                                        <b>Followers</b> <a class="pull-right">@ViewBag.TotalFollower</a>
+                                    </li>
+                                    @*<li class="list-group-item">
+            <b>Following</b> <a class="pull-right">112</a>
+        </li>*@
+
+
+                                    @if (ViewBag.f != null)
+    {
+        using (Html.BeginForm("Follow", "Client", FormMethod.Post))
+        {
+                                @*<a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>*@
+
+
+
+                                <input name="Fk_Client_id" type="hidden" value="@ViewBag.ClientID">
+                                <input name="Fk_PhotoGrapher_ID" type="hidden" value="@ViewBag.photographerid ">
+
+
+
+
+                                <button class="btn btn-primary btn-block"><b>Follow</b></button>
+}
+
+
+}
+
+
+else
+{
+
+using (Html.BeginForm("UnFollow", "Client", FormMethod.Post))
+{
+
+                                <input type="hidden" name="UnfollowID" value="@Model.Follower.FollowerID" />
+
+                                <button class="btn btn-primary btn-block"><b>Unfollow</b></button>
+
+}
+
+
+}
+
+
+
+                                    <hr>
+                                    <a href="#Booking" class="btn btn-danger btn-block" data-toggle="tab"><b>Hire</b></a>
+                                    <a href="#Complain" class="btn btn-danger btn-block" data-toggle="tab"><b>Complain</b></a>
+
+                                    <!--
+      <li class="list-group-item">
+        <b>Friends</b> <a class="pull-right">13,287</a>
+      </li>
+    -->
+
+                                    <li class="list-group-item">
+                                        <p align="center">Ratting</p>
+                                        <div align="center" id="rateYo"></div>
+
+                                    </li>
+
+
+                                </ul>
+
+                                <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                        <!-- About Me Box -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">About Me</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+
+                                <strong><i class="fa fa-file-text-o margin-r-5"></i> UserName</strong>
+
+                                <p>@Model.PhotoGrapher.UserName</p>
+
+                                <hr>
+                                <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+
+                                <p class="text-muted">
+                                    @Model.Basic_Profile.Education
+                                </p>
+
+                                <hr>
+
+                                <strong><i class="fa fa-map-marker margin-r-5"></i>Present Location</strong>
+
+                                <p class="text-muted">@Model.Basic_Profile.Address</p>
+
+
+                                <hr>
+
+                                <strong><i class="fa fa-wrench margin-r-5"></i>Experience</strong>
+
+                                <p>
+                                    @foreach (var item in Model.Experience)
+                                    {
+
+
+                                        <span class="label label-danger">@item.experinces.ExperienceName</span>
+                                    }
+
+                                </p>
+
+                               
+
+                                <hr>
+
+                                <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+
+                                <p>
+
+                                    @foreach (var item in Model.Skill)
+                                    {
+
+
+                                        <span class="label label-success">@item.Skills.SkillName</span>
+
+
+                                    }
+                                </p>
+
+
+
+                              
+
+                                <hr>
+
+                                <strong><i class="fa fa-camera margin-r-5"></i> Type Of PhotoGraphy</strong>
+
+                                <p>
+                                    @foreach (var item in Model.type)
+                                    {
+                                        <span class="label label-info">@item.PhotoGraphyTypes.PhotoGraphyTypes</span>
+
+
+
+                                    }
+                                </p>
+
+                                
+                                <hr>
+
+                                <strong><i class="fa fa-hand-peace-o margin-r-5"></i> Awards/Price/Compition</strong>
+
+                                <p>
+                                    @foreach (var item in Model.Award)
+                                    {
+                                        <span class="label label-warning">@item.Awards.AwardName</span>
+
+                                    }
+                                </p>
+
+                              
+
+                                <hr>
+
+                                <strong><i class="fa fa-file-text-o margin-r-5"></i> Email</strong>
+
+                                <p>@Model.PhotoGrapher.Email</p>
+
+                                <hr>
+
+                                <strong><i class="fa fa-file-text-o margin-r-5"></i> Phone</strong>
+
+                                <p>@Model.Basic_Profile.Phone</p>
+
+
+                                <hr>
+
+                                <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+
+                                <p>@Model.Basic_Profile.Notes</p>
+
+
+                                <hr>
+
+                                <strong><i class="fa fa-users margin-r-5"></i> Rates This Profile</strong>
+
+                                @if (ViewBag.RattingMessage != null)
+                                {
+
+                                    
+
+
+                                        <p>@ViewBag.RattingMessage </p>
+
+
+
+                                   
+                                }
+
+                                else
+                                {
+                                  using (Html.BeginForm("AddRatting", "Client", FormMethod.Post))
+                                   {
+                                    <input name="Fk_Client_id" type="hidden" value="@ViewBag.ClientID">
+                                    <input name="Fk_PhotoGrapher_ID" type="hidden" value="@Model.PhotoGrapher.PhotoGrapherId">
+                                    <div align="center" id="rateYoadd"></div>
+                                        <input type="hidden" id="Ratting" name="Ratting" />
+
+                                        <button align="center" class="btn btn-block btn-info">Rate</button>
+
+                                }
+                               }
+
+
+                            </div>
+
+
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-9">
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
+                                <li><a href="#PhotoGallary" data-toggle="tab">Photo Gallary</a></li>
+                                <li><a href="#Portfolio" data-toggle="tab">Portfolio</a></li>
+                                <li><a href="#Price" data-toggle="tab">Price Details</a></li>
+                                <li><a href="#Contact" data-toggle="tab">Contact</a></li>
+                                <li><a href="#Booking" data-toggle="tab">Booking/Appointment</a></li>
+                                <li><a href="#Complain" data-toggle="tab">Complain</a></li>
+
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div class="active tab-pane" id="activity">
+                                    <!-- Post -->
+
+                                    @foreach (var item in Model.Gallary)
+        {
+
+
+                            <div class="post">
+                                <div class="user-block">
+                                    <img class="img-circle img-bordered-sm" src="@Url.Content(item.ImagePath)" alt="user image">
+                                    <span class="username">
+                                        <a href="#">Sodipto Saha(@item.Fk_PhotoGrapher_ID)</a>
+                                        <!--<a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>-->
+                                    </span>
+                                    <span class="description">Shared publicly - @item.Date_time</span>
+                                </div>
+                                <!-- /.user-block -->
+                                <p>
+                                    <h3>@item.Caption</h3>
+
+                                </p>
+
+
+                                <img class="img-responsive pad" src="@Url.Content(item.ImagePath)" alt="Photo">
+
+
+                                @if (item.Description != null)
+    {
+                            <p>
+
+
+                                @item.Description
+
+                            </p>
+}
+
+                                @if (item.CameraUsed != null)
+    {
+                            <p>
+                                <h3><b>Camera Used:</b>  @item.CameraUsed</h3>
+
+                            </p>
+}
+                                <ul class="list-inline">
+                                    <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i>Like(50)</a></li>
+
+
+
+                                </ul>
+
+
+
+
+                            </div>
+}
+
+                                    <div class="box-footer clearfix">
+                                        <ul class="pagination pagination-sm no-margin pull-right">
+                                            <li><a href="#">&laquo;</a></li>
+                                            <li><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">&raquo;</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- /.tab-pane -->
+                                <!-- /.tab-pane -->
+                                <div class="tab-pane" id="PhotoGallary">
+
+                                    <div class="post clearfix">
+
+
+
+
+                                        <div class="services">
+
+                                            @foreach (var item in Model.Gallary)
+                {
+
+
+                            <div class="col-md-6">
+                                <figure class="snip1174 navy col-md-6">
+                                    <img src="@Url.Content(item.ImagePath)" alt="sq-sample33" />
+                                    <figcaption>
+                                        <h4>@item.Caption </h4>
+
+
+
+                                        <p>
+
+
+                                            <a href="/Client/PhotoDetails/@item.PhotoID">Details</a>
+
+                                        </p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+}
+
+
+                                        </div>
+
+
+                                        @*<div class="box-footer clearfix">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>*@
+
+                                    </div>
+
+                                </div>
+
+                                <!--startPortFolio Tab-->
+                                <div class="tab-pane" id="Portfolio">
+
+                                    <div class="post">
+                                        <div class="user-block">
+                                            <img class="img-circle img-bordered-sm" src="@Url.Content(Model.p_Picture.ImagePath)" alt="User Image">
+                                            <span class="username">
+                                                <a href="#">@Model.PhotoGrapher.FullName</a>
+
+                                            </span>
+                                            @* <span class="description">Posted 5 photos - 5 days ago</span>*@
+                                        </div>
+                                        <!-- /.user-block -->
+                                        <div class="clearfix">
+
+
+                                            @foreach (var item in Model.Albams)
+
+                {
+
+
+                            <div class="services">
+                                <div class="col-md-6">
+                                    <figure class="snip1174 navy col-md-6">
+
+                                        <img src="@Url.Content(item.ImagePath)" alt="sq-sample33" style="max-height:240px; max-width:368px;" />
+                                        <figcaption>
+
+
+
+
+                                        </figcaption>
+                                    </figure>
+                                    <div class="caption">
+                                        <a href="/Client/PortfolioPhotos/@item.AlbamID?AlbamName=@item.Caption">@item.Caption</a>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        </div>
+                                        <!-- /.row -->
+
+
+
+                                    </div>
+
+                                </div>
+                                <!--end PortFolio-->
+                                <!-- /.tab-pane Price Details-->
+                                <div class="tab-pane" id="Price">
+
+                                    <div class="box container">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Photography Catagory Price Details</h3>
+
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body">
+                                            <table class="table table-bordered">
+
+                                                <tbody>
+                                                    <tr>
+                                                        <th style="width: 10px">#</th>
+                                                        <th>Catagory</th>
+                                                        <th>Details</th>
+                                                        <th style="width: 40px">Price</th>
+
+                                                    </tr>
+                                                    @foreach (var item in Model.priceDetail)
+                        {
+
+
+
+                            <tr>
+                                <td>@(sr + 1)</td>
+                                <td>@item.Catagory</td>
+                                <td>
+                                    <p>@item.Details</p>
+                                </td>
+                                <td><span class="badge bg-green">@item.Price</span></td>
+
+                            </tr>
+
+
+}
+
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- /.box-body -->
+                                        <div class="box-footer clearfix">
+                                            <ul class="pagination pagination-sm no-margin pull-right">
+                                                <li><a href="#">&laquo;</a></li>
+                                                <li><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">&raquo;</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+
+                                <!--contact -->
+                                <div class="tab-pane" id="Contact">
+
+                                    @using (Html.BeginForm("PhotoGrapherContact", "Client", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+                            <div class="form-group">
+
+
+                                <input id="Name" name="Name" type="hidden" value="@ViewBag.ClientName">
+
+                                <input name="Fk_ClientID" type="hidden" value="@ViewBag.ClientID">
+                                <input name="Fk_PhotoGrapherID" type="hidden" value="@Model.PhotoGrapher.PhotoGrapherId">
+
+
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+
+                                <div class="col-sm-10">
+                                    <input type="email" name="Email" class="form-control" id="Email" placeholder="Email *" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" Name="Phone" id="Phone" placeholder="Phone" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputExperience" class="col-sm-2 control-label">Message</label>
+
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" id="Message" name="Message" maxlength="200" placeholder="Message Maximum 200 Char" required></textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-danger">Contact</button>
+                                </div>
+                            </div>
+}
+                                </div>
+
+
+                                <!--Complain -->
+                                <div class="tab-pane" id="Complain">
+
+                                    @using (Html.BeginForm("PhotoGrapherComplain", "Client", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+                            <div class="form-group">
+
+
+                              
+
+                                <input name="Fk_ClientID" type="hidden" value="@ViewBag.ClientID">
+                                <input name="Fk_PhotoGrapherID" type="hidden" value="@Model.PhotoGrapher.PhotoGrapherId">
+
+
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-sm-2 control-label">Victim Name</label>
+
+                                <div class="col-sm-10">
+                                    <input  name="VictimName" value="@ViewBag.ClientName" class="form-control" id="VictimName" placeholder="VictimName *" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" value="@Model.PhotoGrapher.FullName" name="PhotographerName" id="PhotographerName" placeholder="PhotographerName" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputExperience" class="col-sm-2 control-label">Message</label>
+
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" id="Message" name="Message" maxlength="200" placeholder="Message Maximum 200 Char" required></textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-danger">Complain</button>
+                                </div>
+                            </div>
+}
+                                </div>
+                                <!-- /.tab-pane Booking -->
+                                <div class="tab-pane" id="Booking">
+
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="well-block">
+                                                    <div class="well-title">
+                                                        <h3>Booked an Appointment</h3>
+                                                    </div>
+                                                    @using (Html.BeginForm("PhotoGrapherBooking", "Client", FormMethod.Post))
+                        {
+                            <!-- Form start -->
+                            <div class="row">
+                                <div class="col-md-12 col-sm-6">
+
+
+                                    <input id="Name" name="Name" type="hidden" value="@ViewBag.ClientName">
+
+                                    <input name="Fk_Client_Id" type="hidden" value="@ViewBag.ClientID">
+                                    <input name="Fk_PhotoGrapher_Id" type="hidden" value="@Model.PhotoGrapher.PhotoGrapherId">
+
+
+
+
+
+                                </div>
+                                <!-- Text input-->
+                                <div class="col-md-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="email">Email</label>
+                                        <input id="Email" name="Email" type="email" placeholder="E-Mail" class="form-control input-md" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="phone">Phone</label>
+                                        <input id="Phone" name="Phone" type="number" placeholder="Phone" class="form-control input-md" required>
+                                    </div>
+                                </div>
+                                <!-- Text input-->
+                                <div class="col-md-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="date">Preferred Date</label>
+                                        <input id="PreferedDate" name="PreferedDate" type="date" placeholder="Preferred Date" class="form-control input-md" required>
+                                    </div>
+                                </div>
+                                <!-- Select Basic -->
+                                <div class="col-md-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="time">Preferred Day</label>
+                                        <select id="PreferedDay" name="PreferedDay" class="form-control" required>
+                                            <option value="">Select Day</option>
+
+                                            <option value="Saturday">Saturday</option>
+                                            <option value="Sunday">Sunday</option>
+                                            <option value="Monday">Monday</option>
+                                            <option value="Tuesday">Tuesday</option>
+                                            <option value="Wednesday">Wednesday</option>
+                                            <option value="Thusday">Thusday</option>
+                                            <option value="Friday">Friday</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="date">Preferred Time</label>
+                                        <input id="PreferedTime" name="PreferedTime" type="time" placeholder="Preferred Time Choose to free slot" class="form-control input-md" required>
+                                    </div>
+                                </div>
+                                <!-- Select Basic -->
+                                <div class="col-md-12 col-sm-6">
+                                    <div class="form-group">
+                                        <label class="control-label" for="appointmentfor">Appointment For</label>
+                                        <select id="AppointmentFor" name="AppointmentFor" class="form-control" required>
+                                            <option value="">Select PhotoGraphy</option>
+
+                                            <option value="Event PhotoGraphy">Event PhotoGraphy</option>
+                                            <option value="Wedding PhotoGraphy">Wedding PhotoGraphy</option>
+                                            <option value="Party PhotoGraphy">Party PhotoGraphy</option>
+                                            <option value="Convocation PhotoGraphy">Convocation PhotoGraphy</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Button -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <button class="btn btn-success">Make An Appointment</button>
+                                    </div>
+                                </div>
+                            </div>
+}
+                                                    <!-- form end -->
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6">
+
+
+                                                <div class="row">
+
+                                                    <div class="col-md-12">
+                                                        <h3>Free Time Slot For Booking</h3>
+
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="box box-success box-solid collapsed-box">
+                                                            <div class="box-header with-border">
+                                                                <h3 class="box-title">Saturday</h3>
+
+                                                                <div class="box-tools pull-right">
+                                                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <!-- /.box-tools -->
+                                                            </div>
+                                                            <!-- /.box-header -->
+                                                            <div class="box-body" style="display: none;">
+                                                                <fieldset>
+                                                                    <legend>TimeSlot</legend>
+
+                                                                    <ul>
+                                                                        <li>10am-2.pm</li>
+                                                                        <li>4pm-8pm</li>
+                                                                    </ul>
+                                                                </fieldset>
+                                                            </div>
+                                                            <!-- /.box-body -->
+                                                        </div>
+                                                        <!-- /.box -->
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="box box-info box-solid collapsed-box">
+                                                            <div class="box-header with-border">
+                                                                <h3 class="box-title">Sunday</h3>
+
+                                                                <div class="box-tools pull-right">
+                                                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <!-- /.box-tools -->
+                                                            </div>
+                                                            <!-- /.box-header -->
+                                                            <div class="box-body" style="display: none;">
+                                                                <fieldset>
+                                                                    <legend>TimeSlot</legend>
+
+                                                                    <ul>
+                                                                        <li>10am-2.pm</li>
+                                                                        <li>4pm-8pm</li>
+                                                                    </ul>
+                                                                </fieldset>
+                                                            </div>
+                                                            <!-- /.box-body -->
+                                                        </div>
+                                                        <!-- /.box -->
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="box box-danger box-solid collapsed-box">
+                                                            <div class="box-header with-border">
+                                                                <h3 class="box-title">Monday</h3>
+
+                                                                <div class="box-tools pull-right">
+                                                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <!-- /.box-tools -->
+                                                            </div>
+                                                            <!-- /.box-header -->
+                                                            <div class="box-body" style="display: none;">
+                                                                <fieldset>
+                                                                    <legend>TimeSlot</legend>
+
+                                                                    <ul>
+                                                                        <li>11am-2.pm</li>
+                                                                        <li>3pm-6pm</li>
+                                                                    </ul>
+                                                                </fieldset>
+                                                            </div>
+                                                            <!-- /.box-body -->
+                                                        </div>
+                                                        <!-- /.box -->
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="box box-warning box-solid collapsed-box">
+                                                            <div class="box-header with-border">
+                                                                <h3 class="box-title">Tuesday</h3>
+
+                                                                <div class="box-tools pull-right">
+                                                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <!-- /.box-tools -->
+                                                            </div>
+                                                            <!-- /.box-header -->
+                                                            <div class="box-body" style="display: none;">
+                                                                <fieldset>
+                                                                    <legend>TimeSlot</legend>
+
+                                                                    <ul>
+                                                                        <li>9am-1.pm</li>
+                                                                        <li>4.30pm-8pm</li>
+                                                                    </ul>
+                                                                </fieldset>
+                                                            </div>
+                                                            <!-- /.box-body -->
+                                                        </div>
+                                                        <!-- /.box -->
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="box box-success box-solid collapsed-box">
+                                                            <div class="box-header with-border">
+                                                                <h3 class="box-title">Wednesday</h3>
+
+                                                                <div class="box-tools pull-right">
+                                                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <!-- /.box-tools -->
+                                                            </div>
+                                                            <!-- /.box-header -->
+                                                            <div class="box-body" style="display: none;">
+                                                                <fieldset>
+                                                                    <legend>TimeSlot</legend>
+
+                                                                    <ul>
+                                                                        <li>10am-4.pm</li>
+
+                                                                    </ul>
+                                                                </fieldset>
+                                                            </div>
+                                                            <!-- /.box-body -->
+                                                        </div>
+                                                        <!-- /.box -->
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="box box-danger box-solid collapsed-box">
+                                                            <div class="box-header with-border">
+                                                                <h3 class="box-title">Thusday</h3>
+
+                                                                <div class="box-tools pull-right">
+                                                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <!-- /.box-tools -->
+                                                            </div>
+                                                            <!-- /.box-header -->
+                                                            <div class="box-body" style="display: none;">
+                                                                <fieldset>
+                                                                    <legend>TimeSlot</legend>
+
+                                                                    <ul>
+                                                                        <li>9am-2.pm</li>
+
+
+
+                                                                    </ul>
+                                                                </fieldset>
+                                                            </div>
+                                                            <!-- /.box-body -->
+                                                        </div>
+                                                        <!-- /.box -->
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="box box-info box-solid collapsed-box">
+                                                            <div class="box-header with-border">
+                                                                <h3 class="box-title">Friday</h3>
+
+                                                                <div class="box-tools pull-right">
+                                                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                                        <i class="fa fa-plus"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <!-- /.box-tools -->
+                                                            </div>
+                                                            <!-- /.box-header -->
+                                                            <div class="box-body" style="display: none;">
+                                                                <fieldset>
+                                                                    <legend>TimeSlot</legend>
+
+                                                                    <ul>
+                                                                        <li>Hole Day Contact</li>
+
+                                                                    </ul>
+                                                                </fieldset>
+                                                            </div>
+                                                            <!-- /.box-body -->
+                                                        </div>
+                                                        <!-- /.box -->
+                                                    </div>
+
+
+
+
+
+
+
+
+
+
+                                                </div>
+
+                                            </div>
+
+
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                                <!-- /.tab-pane end Booking -->
+                                <!-- /.tab-pane -->
+                            </div>
+                            <!-- /.tab-content -->
+                        </div>
+                        <!-- /.nav-tabs-custom -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+                <div>
+
+
+                </div>
+
+            </section>
+            <!-- /.box -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /.content-wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section Scripts {
+    <script src="~/Content/Component/dist/js/uploadphoto.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+
+    <script type="text/javascript">
+ $(function () {
+
+     var Rattingvalue = JSON.parse('@Html.Raw(PhotoGrapherRatting)');
+
+
+  $("#rateYo").rateYo({
+      rating: Rattingvalue,
+      halfStar: true
+  });
+
+
+    $("#rateYoadd").rateYo({
+        rating: 0.0,
+        halfStar: true,
+        onChange:function(Ratting,rateYoInstance){
+
+            $('#Ratting').val(Ratting);
+
+        }
+
+           
+
+
+    });
+
+
+
+     //validation
+    $("input[name=Phone]").on("blur", function (e) {
+        var myval = $(this).val();
+
+        if (myval.length >=1 && myval.length<11) {
+            alert("Phone Number must contain 11 characters.");
+            return false;
+          //  $(this).focus();
+        }
+    });
+
+
+});
+    </script>;
+}

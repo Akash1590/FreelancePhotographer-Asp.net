@@ -1,0 +1,75 @@
+﻿@model CoolCat.PhotoGrapherLancer.Core.Entities.PhotoGrapher.PhotoUploadGallary
+
+@{
+    ViewBag.Title = "PhotoDetails";
+    Layout = "~/Views/Shared/_Layout_PhotoGrapherPage.cshtml";
+}
+
+
+
+@section CSS{
+
+    <link href="~/Content/Component/dist/css/uploadphoto.css" rel="stylesheet" />
+
+}
+
+
+
+
+<section class="content-header">
+    <h1>
+      Gallary Photo
+        <small>Details</small>
+    </h1>
+
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container">
+
+       
+
+      
+
+
+        <!-- details-image -->
+            <figure class="details-image">
+                <img src="@Url.Content(Model.ImagePath)" alt="" class="img-responsive">
+            </figure>
+        <!-- details-image -->
+        <!-- content -->
+            <div class="details-content">
+                <!-- left -->
+                <section class="">
+                    <header>
+                        <h3>@Model.Caption</h3>
+
+                    </header>
+                </section>
+                <!-- left -->
+                <!-- right -->
+                <section class="text_justyfy">
+                    <p>@Model.Description</p>
+
+                    <header>
+                        @if (Model.CameraUsed != null)
+                        {
+                            <h3>Camera Used:@Model.CameraUsed</h3>
+                        }
+                    </header>
+                </section>
+                <!-- right -->
+            </div>
+           
+       
+
+
+    </div>
+
+
+
+</section>
+
+
+
